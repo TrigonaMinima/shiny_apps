@@ -11,6 +11,7 @@ shinyUI(fluidPage(
       strong("Settings:"),
       checkboxInput("checkbox3", label = "Document stemming", value = TRUE),
       checkboxInput("checkbox4", label = "Random Order", value = FALSE),
+      checkboxInput("checkbox2", label = "Repeatable", value = TRUE),
 
       sliderInput("slider1", "Minimum Frequency:",
         min = 1, max = 50, value = 5),
@@ -28,6 +29,6 @@ shinyUI(fluidPage(
     mainPanel(
       downloadButton("wordcloud_img", "Download Image"),
 
-      plotOutput("wordcloud", height=600, width=800))
+      imageOutput("wordcloud"))
   )
 ))

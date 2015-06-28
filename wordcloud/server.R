@@ -30,10 +30,18 @@ shinyServer(function(input, output, session) {
     if (input$checkbox3) datainput <- tm_map(datainput(), stemDocument)
     })
 
-wordcloud_rep <- repeatable(wordcloud)
+  # wordcloud_rep <- repeatable(wordcloud)
 
-  make_cloud <- reactive({
-    wordcloud_rep(finalinput(),
+  asdas <- reactive({
+    if (input$checkbox2) wordcloud_rep <- repeatable(wordcloud)
+    else wordcloud_rep <- wordcloud
+  })
+
+  make_cloud <- reactive ({
+    wordcloud_rep <- asdas()
+
+    png("wordcloud.png", width=10, height=8, units="in", res=350)
+    w <- wordcloud_rep(finalinput(),
       scale=c(5, 0.5),
       min.freq=input$slider1,
       max.words=input$slider2,
@@ -41,19 +49,21 @@ wordcloud_rep <- repeatable(wordcloud)
       rot.per=input$slider3,
       use.r.layout=FALSE,
       colors=brewer.pal(8, "Dark2"))
+    dev.off()
+
+    filename <- "wordcloud.png"
     })
 
-  # output$wordcloud_img <- downloadHandler(
-  #   filename = "wordcloud.png",
-  #   content = function(cloud) {
-  #     png(cloud)
-  #     make_cloud()
-  #     dev.off()
-  #   })
+  output$wordcloud_img <- downloadHandler(
+    filename = "wordcloud.png",
+    content = function(cloud) {
+      file.copy(make_cloud(), cloud)
+    })
 
-  output$wordcloud <- renderPlot({
-    make_cloud()
-   })
+  output$wordcloud <- renderImage({
+    print(make_cloud())
+    list(src=make_cloud(), alt="Image being generated!", height=600)
+  }, deleteFile = FALSE)
 })
 
 
