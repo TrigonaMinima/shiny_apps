@@ -1,0 +1,1 @@
+A shiny app which lets you make a wordcloud and download the image (png) and the freq of words (csv). Have fun.

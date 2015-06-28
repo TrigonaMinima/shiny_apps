@@ -4,7 +4,7 @@ library(shiny)
 library(wordcloud)
 library(tm)
 
-shinyServer(function(input, output, session) {
+shinyServer(function(input, output) {
 
   datainput <- reactive({
 

@@ -3,7 +3,7 @@ library(shiny)
 # remove individual words
 
 shinyUI(fluidPage(
-  titlePanel("Shiny Wordcloud!"),
+  titlePanel("Wordcloud!"),
 
   sidebarLayout(
     sidebarPanel(
