@@ -1,4 +1,6 @@
 # http://shiny.rstudio.com/gallery/word-cloud.html
+# download freq table?
+
 
 library(shiny)
 library(wordcloud)
@@ -7,13 +9,17 @@ library(tm)
 shinyServer(function(input, output, session) {
 
   datainput <- reactive({
+
+    validate(
+      need((input$text != "") || (!is.null(input$file)),
+        "Please give me some text to work upon!"
+      )
+    )
+
     if (nchar(input$text) > 0){
       words <- Corpus(VectorSource(input$text))
     }
-    else if (is.null(input$file)) {
-      return(NULL)
-    }
-    else {
+    else if (is.null(input$file)){
       a <- input$file$datapath
       a <- substr(a, 1, nchar(a) - 1)
       words <- Corpus(DirSource(a))
@@ -28,6 +34,7 @@ shinyServer(function(input, output, session) {
 
   finalinput <- reactive({
     if (input$checkbox3) datainput <- tm_map(datainput(), stemDocument)
+    datainput
     })
 
   # wordcloud_rep <- repeatable(wordcloud)
@@ -61,14 +68,7 @@ shinyServer(function(input, output, session) {
     })
 
   output$wordcloud <- renderImage({
-    print(make_cloud())
     list(src=make_cloud(), alt="Image being generated!", height=600)
-  }, deleteFile = FALSE)
+  },
+  deleteFile = FALSE)
 })
-
-
-# character_case <- function(words, case) {
-#   switch(case,
-#     "Lower Case" = tm_map(words, content_transformer(tolower)),
-#     "Upper Case" = tm_map(words, content_transformer(toupper)))
-# }
