@@ -34,7 +34,7 @@ shinyServer(function(input, output, session) {
 
   finalinput <- reactive({
     if (input$checkbox3) datainput <- tm_map(datainput(), stemDocument)
-    datainput
+    datainput()
     })
 
   # wordcloud_rep <- repeatable(wordcloud)
