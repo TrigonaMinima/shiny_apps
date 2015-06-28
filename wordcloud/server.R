@@ -1,6 +1,4 @@
 # http://shiny.rstudio.com/gallery/word-cloud.html
-# download freq table?
-
 
 library(shiny)
 library(wordcloud)
@@ -19,7 +17,7 @@ shinyServer(function(input, output, session) {
     if (nchar(input$text) > 0){
       words <- Corpus(VectorSource(input$text))
     }
-    else if (is.null(input$file)){
+    else if (!is.null(input$file)){
       a <- input$file$datapath
       a <- substr(a, 1, nchar(a) - 1)
       words <- Corpus(DirSource(a))
@@ -36,8 +34,6 @@ shinyServer(function(input, output, session) {
     if (input$checkbox3) datainput <- tm_map(datainput(), stemDocument)
     datainput()
     })
-
-  # wordcloud_rep <- repeatable(wordcloud)
 
   asdas <- reactive({
     if (input$checkbox2) wordcloud_rep <- repeatable(wordcloud)
@@ -65,6 +61,14 @@ shinyServer(function(input, output, session) {
     filename = "wordcloud.png",
     content = function(cloud) {
       file.copy(make_cloud(), cloud)
+    })
+
+  output$freq_csv <- downloadHandler(
+    filename = "freq.csv",
+    content = function(freq) {
+      a <- DocumentTermMatrix(finalinput())
+      b <- sort(colSums(as.matrix(a)), decreasing=TRUE)
+      write.csv(b, freq)
     })
 
   output$wordcloud <- renderImage({

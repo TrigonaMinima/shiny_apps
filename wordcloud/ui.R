@@ -28,6 +28,7 @@ shinyUI(fluidPage(
 
     mainPanel(
       downloadButton("wordcloud_img", "Download Image"),
+      downloadButton("freq_csv", "Download Freq CSV"),
 
       imageOutput("wordcloud"))
   )
