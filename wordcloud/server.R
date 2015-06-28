@@ -3,6 +3,7 @@
 library(shiny)
 library(wordcloud)
 library(tm)
+library(SnowballC)
 
 shinyServer(function(input, output) {
 
