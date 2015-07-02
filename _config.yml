@@ -3,9 +3,11 @@ description: A collection of very small shiny apps.
 baseurl: /shiny_apps
 url: http://trigonaminima.github.io
 
-
+highlighter: pygments
 permalink: pretty
 markdown: kramdown
+rdiscount:
+  extensions: [smart]
 
 
 # Owner Settings
