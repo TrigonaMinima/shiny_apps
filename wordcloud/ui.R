@@ -1,7 +1,5 @@
 library(shiny)
 
-# remove individual words
-
 shinyUI(fluidPage(
   # Title of the app
   titlePanel("Wordcloud!"),
