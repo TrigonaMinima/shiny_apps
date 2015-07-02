@@ -1,0 +1,18 @@
+title: Shiny Apps
+description: A collection of very small shiny apps.
+url: http://trigonaminima.github.io/shiny_apps/
+
+
+highlighter: pygments
+permalink: pretty
+markdown: kramdown
+rdiscount:
+  extensions: [smart]
+
+# Owner Settings
+owner: Shivam Rana
+avatar: 'http://www.gravatar.com/avatar/c9b959b3098d7c12ee8c389c817c91e8.png'
+email: trigonamin@gmail.com
+bio: 'Another curious soul. Lives in Delhi. Interested in a lot of things - Science, Arts, History, Philosophy - basically everything around me and you.'
+twitter_username: TrigonaMinima
+github_username: TrigonaMinima

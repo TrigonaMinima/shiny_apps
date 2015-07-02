@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<h1><a id="shiny-apps" class="anchor" href="#shiny-apps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shiny Apps</h1>
+
+<p>This a collection of small shiny apps I have made (or going to make) to learn <a href="http://shiny.rstudio.com/">shiny</a> (by RStudio). The list of apps in this repo are listed (and documented) on this page. To learn more about the apps (what they do and how were they developed to do what they do) just read further. </p>
+
+<p>One piece of <em>advice!</em> The following write-ups on the apps are specifically for those who are developing shiny apps. You can find the deployed versions of these apps on the <a href="https://www.shinyapps.io/">shinyapps.io</a> but with the free versions of the platform I can only run a maximum of 5 apps at a time. So, many apps will most probably be sleeping, although you can try your luck. May be, you'll find that app running. </p>
+
+<p>Although, looking at the working examples will be more helpful, but if you want to have any background knowledge on shiny - how it works, how to deploy your app, how to design your ui in HTML and much more - then have a look at <a href="http://shiny.rstudio.com/articles/">shiny articles</a>. Shiny have prepared a pretty good material to learn the platform by yourself.</p>
+
+<p>If you would like to see the code and tinker with it, there are 2 ways.</p>
+
+<ol>
+    <li>Just follow the commands,
+{% highlight sh %}
+$ git clone https://github.com/TrigonaMinima/shiny_apps
+$ cd shiny_apps/
+$ R
+{% endhighlight %}
+
+{% highlight R %}
+# Inside R console
+# install.packages("shiny")
+library(shiny)
+# Appname is the name of directory present inside the repository thus,
+# to run "wordcloud" run this
+runApp("wordcloud")
+{% endhighlight %}</li>
+
+    <li>To make your life (and mine) simple I have hosted each app on the github gist. And, shiny has been kind enough to provide a way to directly run the app from gists.
+{% highlight R %}
+# Inside R console
+# install.packages("shiny")
+library(shiny)
+runGist("<gist_number>")
+# gist_number will be given by me of course on the individual app page.
+# The above instruction will launch the app in your browser.
+{% endhighlight %}</li>
+</ol>
+
+<p>Okay, enough explaining. Lets look at the app(s).</p>
+
+<ul>
+  {% for post in site.posts %}
+    <li><h2><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2></li>
+  {% endfor %}
+</ul>
