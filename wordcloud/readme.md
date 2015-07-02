@@ -1,1 +1,2 @@
-A shiny app which lets you make a wordcloud and download the image (png) and the freq of words (csv). Have fun.
+A shiny app which lets you make a wordcloud and download the image (png) and the freq of words (csv). 
+To know more head over to - [wordcloud](https://trigonaminima.github.io/shiny_apps/2014/06/28/wordcloud/)
