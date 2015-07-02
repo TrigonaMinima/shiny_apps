@@ -21,7 +21,7 @@ runGist("bd0fb5a568b8227487ee")
 
 Here's how it'll look when running.
 
-![wordcloud app ui](/ui.png)
+![wordcloud app ui]({{ site.url }}/{{ site.baseurl }}/ui.png)
 
 Now, let's talk about the code. The basics you would probably know - the concept of ui.R and server.R (if not and want to know, then head to [tutorial](http://shiny.rstudio.com/tutorial/)). Check out the code by running, ```git clone https://gist.github.com/bd0fb5a568b8227487ee wordcloud```. I am not going to document the whole process here. R Studio has done a pretty good job. I'll explain the key parts of the code along the way as user enters the text and a graph being presented on the app.
 
